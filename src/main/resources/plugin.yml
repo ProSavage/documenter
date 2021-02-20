@@ -1,0 +1,4 @@
+name: DockerDocumenter
+main: net.savagelabs.dockerdocumenter.Documenter
+version: @project.version@
+loadbefore: [FactionsX, SkyblockX]
