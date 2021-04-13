@@ -3,13 +3,13 @@ package net.savagelabs.dockerdocumenter.docs
 import net.savagelabs.dockerdocumenter.util.log
 import java.lang.StringBuilder
 
-interface DocumentationProvider {
+abstract class DocumentationProvider {
 
-    val identifier: String
+    abstract fun getIdentifier(): String
 
-    fun getCommands(): List<DocCommand>
+    abstract fun getCommands(): List<DocCommand>
 
-    fun getPermissions(): List<DocPermission>
+    abstract fun getPermissions(): List<DocPermission>
 
     fun generateDocs(): String {
         val commandContent = StringBuilder()
@@ -22,7 +22,7 @@ interface DocumentationProvider {
     }
 
 
-    fun processSubCommands(command: DocCommand, commandString: StringBuilder, depth: Int) {
+    private fun processSubCommands(command: DocCommand, commandString: StringBuilder, depth: Int) {
         for (child in command.children) {
             // this possibly goes after??
             if (child.children.isNotEmpty()) {

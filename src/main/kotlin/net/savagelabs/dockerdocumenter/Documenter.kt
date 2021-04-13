@@ -32,7 +32,7 @@ class Documenter : JavaPlugin(), Listener {
     fun onLoad(event: ServerLoadEvent) {
         log("server loaded --- started processing...")
         providers.forEach {
-            log("Processing ${it.identifier}...")
+            log("Processing ${it.getIdentifier()}...")
             it.generateDocs()
         }
     }
